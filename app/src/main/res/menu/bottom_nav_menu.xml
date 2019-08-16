@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_malfunction_car"
+        android:icon="@drawable/ic_malfunction_car"
+        android:title="@string/malfunction_car" />
+
+    <item
+        android:id="@+id/navigation_modify_car"
+        android:icon="@drawable/ic_modify_car"
+        android:title="@string/modify_car" />
+
+    <item
+        android:id="@+id/navigation_sum_work"
+        android:icon="@drawable/ic_sum_work"
+        android:title="@string/sum_work" />
+</menu>
