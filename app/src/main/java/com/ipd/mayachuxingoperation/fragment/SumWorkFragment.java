@@ -1,5 +1,6 @@
 package com.ipd.mayachuxingoperation.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.ipd.mayachuxingoperation.R;
+import com.ipd.mayachuxingoperation.activity.QRActivity;
 import com.ipd.mayachuxingoperation.base.BaseFragment;
 import com.ipd.mayachuxingoperation.bean.SumWorkBean;
 import com.ipd.mayachuxingoperation.common.view.TopView;
@@ -20,6 +22,7 @@ import com.ipd.mayachuxingoperation.contract.SumWorkContract;
 import com.ipd.mayachuxingoperation.presenter.SumWorkPresenter;
 import com.ipd.mayachuxingoperation.utils.DateUtils;
 import com.ipd.mayachuxingoperation.utils.ToastUtil;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.Calendar;
@@ -29,6 +32,9 @@ import java.util.TreeMap;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.ObservableTransformer;
+import io.reactivex.functions.Consumer;
+
+import static android.Manifest.permission.CAMERA;
 
 /**
  * Description ：工作统计
@@ -164,7 +170,23 @@ public class SumWorkFragment extends BaseFragment<SumWorkContract.View, SumWorkC
         pvTime.show();
     }
 
-    @OnClick({R.id.tv_start_time, R.id.tv_end_time})
+    // 相机权限
+    private void rxPermissionCamera(int lockType) {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(CAMERA).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean granted) throws Exception {
+                if (granted) {
+                    startActivity(new Intent(getContext(), QRActivity.class).putExtra("lockType", lockType));
+                } else {
+                    // 权限被拒绝
+                    ToastUtil.showLongToast(R.string.permission_rejected);
+                }
+            }
+        });
+    }
+
+    @OnClick({R.id.tv_start_time, R.id.tv_end_time, R.id.rv_open_lock, R.id.rv_close_lock, R.id.rv_open_electric_box})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_start_time:
@@ -172,6 +194,15 @@ public class SumWorkFragment extends BaseFragment<SumWorkContract.View, SumWorkC
                 break;
             case R.id.tv_end_time:
                 selectTime(2);
+                break;
+            case R.id.rv_open_lock:
+                rxPermissionCamera(1);
+                break;
+            case R.id.rv_close_lock:
+                rxPermissionCamera(2);
+                break;
+            case R.id.rv_open_electric_box:
+                rxPermissionCamera(3);
                 break;
         }
     }

@@ -1,7 +1,9 @@
 package com.ipd.mayachuxingoperation.api;
 
 import com.ipd.mayachuxingoperation.bean.CaptchaBean;
+import com.ipd.mayachuxingoperation.bean.ControlLockBean;
 import com.ipd.mayachuxingoperation.bean.DayMalfunctionBean;
+import com.ipd.mayachuxingoperation.bean.ElectricBoxBean;
 import com.ipd.mayachuxingoperation.bean.HomeInfoBean;
 import com.ipd.mayachuxingoperation.bean.LoginBean;
 import com.ipd.mayachuxingoperation.bean.MalfunctionCarDetailsBean;
@@ -27,7 +29,9 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.CAPTCHA;
+import static com.ipd.mayachuxingoperation.common.config.UrlConfig.CONTROL_LOCK;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.DAY_MALFUNCTION;
+import static com.ipd.mayachuxingoperation.common.config.UrlConfig.ELECTRIC_BOX;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.HOME_INFO;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.LOGIN;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.MALFUNCTION_DETAILS;
@@ -100,4 +104,14 @@ public interface ApiService {
     //工作统计
     @GET(WORK_SUM)
     Observable<SumWorkBean> getSumWork(@QueryMap Map<String, String> map);
+
+    //开锁、关锁
+    @FormUrlEncoded
+    @POST(CONTROL_LOCK)
+    Observable<ControlLockBean> getControlLock(@FieldMap Map<String, String> map);
+
+    //电池仓开关锁
+    @FormUrlEncoded
+    @POST(ELECTRIC_BOX)
+    Observable<ElectricBoxBean> getElectricBox(@FieldMap Map<String, String> map);
 }

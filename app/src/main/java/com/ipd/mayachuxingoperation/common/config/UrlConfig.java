@@ -44,4 +44,6 @@ public interface UrlConfig {
      * 工作统计
      */
     String WORK_SUM = "Repair/workStatistics"; //工作统计
+    String CONTROL_LOCK = "repair/lock"; //开锁、关锁
+    String ELECTRIC_BOX = "repair/battery"; //电池仓开关锁
 }

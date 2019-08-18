@@ -20,6 +20,7 @@ import butterknife.OnClick;
 import io.reactivex.ObservableTransformer;
 
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.BASE_LOCAL_URL;
+import static com.ipd.mayachuxingoperation.utils.AppUtils.goToGaodeMap;
 
 /**
  * Description ：故障车辆详情
@@ -78,12 +79,7 @@ public class MalfunctionCarDetailsActivity extends BaseActivity<MalfunctionCarDe
 
     @Override
     public void initListener() {
-        tvCarLocation.setRightTvClickListener(new SuperTextView.OnRightTvClickListener() {
-            @Override
-            public void onClickListener() {
-                //跳导航
-            }
-        });
+
     }
 
     @OnClick(R.id.iv_malfunction)
@@ -99,6 +95,14 @@ public class MalfunctionCarDetailsActivity extends BaseActivity<MalfunctionCarDe
         tvMalfunctionType.setRightString(data.getData().getType());
         tvDetailsTx.setRightString(data.getData().getSupplement());
         Glide.with(this).load(BASE_LOCAL_URL + data.getData().getUrl()).apply(new RequestOptions()).into(ivMalfunction);
+
+        tvCarLocation.setRightTvClickListener(new SuperTextView.OnRightTvClickListener() {
+            @Override
+            public void onClickListener() {
+                //跳导航
+                goToGaodeMap(MalfunctionCarDetailsActivity.this, data.getData().getLat() + "", data.getData().getLng() + "");
+            }
+        });
     }
 
     @Override

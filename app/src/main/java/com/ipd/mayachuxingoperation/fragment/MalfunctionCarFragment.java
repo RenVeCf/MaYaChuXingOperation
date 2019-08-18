@@ -119,12 +119,9 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        L.i("data = " + data);
         if (data != null) {
-            L.i("0000000000000000");
             switch (requestCode) {
                 case PictureConfig.CHOOSE_REQUEST:
-                    L.i("1111111111111111111");
                     TreeMap<String, RequestBody> map = new TreeMap<>();
                     map.put("file\";filename=\"" + ".jpeg", getImageRequestBody(PictureSelector.obtainMultipleResult(data).get(0).getCompressPath()));
                     getPresenter().getUploadImg(map, false, false);
@@ -237,9 +234,7 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
 
     @Override
     public void resultModify(ModifyBean data) {
-        L.i("4444444444444444444");
         if (data.getCode() == 200) {
-            L.i("555555555555555");
             malfunctionSumBeanList.remove(removePosition);
             malfunctionCarAdapter.notifyDataSetChanged();
             malfunctionCarAdapter.setEmptyView(R.layout.null_data, rvMalfunctionCar);
@@ -249,9 +244,7 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
 
     @Override
     public void resultUploadImg(UploadImgBean data) {
-        L.i("2222222222222222");
         if (data.getCode() == 200) {
-            L.i("33333333333333333");
             TreeMap<String, String> modifyMap = new TreeMap<>();
             modifyMap.put("url", data.getData().getUrl());
             getPresenter().getModify(modifyId, modifyMap, false, false);

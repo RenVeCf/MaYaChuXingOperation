@@ -195,4 +195,85 @@
         android:layout_marginStart="@dimen/x50"
         android:layout_marginTop="@dimen/y50"
         android:textColor="@color/tx_num" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.xuexiang.xui.widget.button.RippleView
+            android:id="@+id/rv_open_lock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_bt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintWidth_percent="0.8"
+            app:rv_type="simpleRipple">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y150"
+                android:layout_gravity="center"
+                android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"
+                android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center"
+                android:text="开锁"
+                android:textColor="@color/xui_config_color_white"
+                android:textSize="18sp" />
+        </com.xuexiang.xui.widget.button.RippleView>
+
+        <com.xuexiang.xui.widget.button.RippleView
+            android:id="@+id/rv_close_lock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_bt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.8"
+            app:rv_type="simpleRipple">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y150"
+                android:layout_gravity="center"
+                android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"
+                android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center"
+                android:text="关锁"
+                android:textColor="@color/xui_config_color_white"
+                android:textSize="18sp" />
+        </com.xuexiang.xui.widget.button.RippleView>
+
+        <com.xuexiang.xui.widget.button.RippleView
+            android:id="@+id/rv_open_electric_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_bt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
+            app:layout_constraintWidth_percent="0.8"
+            app:rv_type="simpleRipple">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y150"
+                android:layout_gravity="center"
+                android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"
+                android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center"
+                android:text="开电箱"
+                android:textColor="@color/xui_config_color_white"
+                android:textSize="18sp" />
+        </com.xuexiang.xui.widget.button.RippleView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

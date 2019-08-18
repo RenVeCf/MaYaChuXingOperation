@@ -22,18 +22,18 @@
         android:name=".utils.ApplicationUtil"
         android:allowBackup="false"
         android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
-        android:icon="@drawable/ic_logo"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:maxAspectRatio="2.4"
         android:networkSecurityConfig="@xml/network_security_config"
         android:resizeableActivity="true"
-        android:roundIcon="@drawable/ic_logo"
+        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:allowBackup, theme, label">
 
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:label="@string/app_name"
             android:launchMode="singleTask">
@@ -56,6 +56,11 @@
             android:name="notch.config"
             android:value="portrait|landscape" />
 
+        <activity
+            android:name=".activity.LoginActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.PersonalDocumentActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
@@ -96,6 +101,12 @@
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:exported="false"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.QRActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@style/XQRCodeTheme.Custom" />
     </application>
 
 </manifest>
