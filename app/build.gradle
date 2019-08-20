@@ -24,15 +24,45 @@ android {
             abiFilters 'armeabi'//'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
     }
+
+    signingConfigs {
+        config {
+            keyAlias 'mayachuxing_operation'
+            keyPassword '123456'
+            storeFile file('../mayachuxing_operation.jks')
+            storePassword '123456'
+        }
+        test {
+            keyAlias 'mayachuxing_operation'
+            keyPassword '123456'
+            storeFile file('../mayachuxing_operation.jks')
+            storePassword '123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //签名配置
+            signingConfig signingConfigs.config
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "mayachuxing_operation_${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+                }
+            }
         }
 
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //签名配置
+            signingConfig signingConfigs.test
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "mayachuxing_operation_${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+                }
+            }
         }
     }
 
@@ -165,14 +195,6 @@ dependencies {
 
     //RxUtil2
     implementation 'com.github.xuexiangjys:RxUtil2:1.1.5'
-
-    //    //支付宝支付
-
-    //    implementation(name: 'alipaySdk-15.6.2-20190416165100-noUtdid', ext: 'aar')
-
-    //    //微信支付
-
-    //    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
 
     //版本更新
     implementation 'com.zhy:okhttputils:2.6.2'

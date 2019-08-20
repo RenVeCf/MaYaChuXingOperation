@@ -10,8 +10,12 @@ import com.ipd.mayachuxingoperation.base.BaseActivity;
 import com.ipd.mayachuxingoperation.base.BasePresenter;
 import com.ipd.mayachuxingoperation.base.BaseView;
 import com.ipd.mayachuxingoperation.utils.ApplicationUtil;
+import com.ipd.mayachuxingoperation.utils.SPUtil;
 import com.ipd.mayachuxingoperation.utils.ToastUtil;
 import com.xuexiang.xui.utils.Utils;
+
+import static com.ipd.mayachuxingoperation.common.config.IConstants.IS_LOGIN;
+import static com.ipd.mayachuxingoperation.utils.StringUtils.isEmpty;
 
 /**
  * Description ：启动页
@@ -151,7 +155,10 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 // 启动完毕
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                if (!isEmpty(SPUtil.get(SplashActivity.this, IS_LOGIN, "") + "")) {
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                } else
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
         });

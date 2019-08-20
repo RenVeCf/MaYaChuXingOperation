@@ -136,18 +136,18 @@ public class ModifyCarFragment extends BaseFragment<MalfunctionSumContract.View,
                     }
                 }, rvModifyCar);
 
-                if (malfunctionSumBeanList.size() > 10) {
+                if (malfunctionSumBeanList.size() >= 10) {
                     pageNum += 1;
                 } else {
                     modifyCarAdapter.loadMoreEnd();
                 }
             } else {
-                if ((malfunctionSumBeanList.size() - pageNum * 10) > 0) {
+                if ((data.getData().getList().size() - pageNum * 10) >= 0) {
                     pageNum += 1;
-                    modifyCarAdapter.addData(malfunctionSumBeanList);
+                    modifyCarAdapter.addData(data.getData().getList());
                     modifyCarAdapter.loadMoreComplete(); //完成本次
                 } else {
-                    modifyCarAdapter.addData(malfunctionSumBeanList);
+                    modifyCarAdapter.addData(data.getData().getList());
                     modifyCarAdapter.loadMoreEnd(); //完成所有加载
                 }
             }

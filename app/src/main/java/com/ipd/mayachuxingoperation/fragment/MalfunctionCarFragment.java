@@ -196,18 +196,18 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
                         }
                     }, rvMalfunctionCar);
 
-                    if (malfunctionSumBeanList.size() > 10) {
+                    if (malfunctionSumBeanList.size() >= 10) {
                         pageNum += 1;
                     } else {
                         malfunctionCarAdapter.loadMoreEnd();
                     }
                 } else {
-                    if ((malfunctionSumBeanList.size() - pageNum * 10) > 0) {
+                    if ((data.getData().getList().size() - pageNum * 10) >= 0) {
                         pageNum += 1;
-                        malfunctionCarAdapter.addData(malfunctionSumBeanList);
+                        malfunctionCarAdapter.addData(data.getData().getList());
                         malfunctionCarAdapter.loadMoreComplete(); //完成本次
                     } else {
-                        malfunctionCarAdapter.addData(malfunctionSumBeanList);
+                        malfunctionCarAdapter.addData(data.getData().getList());
                         malfunctionCarAdapter.loadMoreEnd(); //完成所有加载
                     }
                 }

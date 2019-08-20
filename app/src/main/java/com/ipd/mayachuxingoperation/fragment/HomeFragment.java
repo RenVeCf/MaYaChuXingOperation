@@ -199,7 +199,6 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                     getPresenter().getUploadImg(map, false, false);
                     break;
                 case REQUEST_CODE_90:
-                    L.i("data.getStringExtra(\"modify_head\") = " + data.getStringExtra("modify_head"));
                     Glide.with(this)
                             .load(data.getStringExtra("modify_head"))
                             .into(new SimpleTarget<Drawable>() {
@@ -208,7 +207,6 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                                     ivUserHead.setImageDrawable(resource);
                                 }
                             });
-
                     tvUserName.setText(data.getStringExtra("modify_name"));
                     break;
             }
@@ -300,18 +298,18 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                         }
                     }, rvHome);
 
-                    if (dayMalfunctionBeanList.size() > 10) {
+                    if (dayMalfunctionBeanList.size() >= 10) {
                         pageNum += 1;
                     } else {
                         homeAdapter.loadMoreEnd();
                     }
                 } else {
-                    if ((dayMalfunctionBeanList.size() - pageNum * 10) > 0) {
+                    if ((data.getData().getList().size() - pageNum * 10) >= 0) {
                         pageNum += 1;
-                        homeAdapter.addData(dayMalfunctionBeanList);
+                        homeAdapter.addData(data.getData().getList());
                         homeAdapter.loadMoreComplete(); //完成本次
                     } else {
-                        homeAdapter.addData(dayMalfunctionBeanList);
+                        homeAdapter.addData(data.getData().getList());
                         homeAdapter.loadMoreEnd(); //完成所有加载
                     }
                 }
