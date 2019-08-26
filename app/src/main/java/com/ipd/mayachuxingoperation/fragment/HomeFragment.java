@@ -36,7 +36,6 @@ import com.ipd.mayachuxingoperation.common.view.SpacesItemDecoration;
 import com.ipd.mayachuxingoperation.common.view.TopView;
 import com.ipd.mayachuxingoperation.contract.HomeContract;
 import com.ipd.mayachuxingoperation.presenter.HomePresenter;
-import com.ipd.mayachuxingoperation.utils.L;
 import com.ipd.mayachuxingoperation.utils.SPUtil;
 import com.ipd.mayachuxingoperation.utils.ToastUtil;
 import com.luck.picture.lib.PictureSelector;
@@ -92,6 +91,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     private List<DayMalfunctionBean.DataBean.ListBean> dayMalfunctionBeanList = new ArrayList<>();
     private HomeAdapter homeAdapter;
     private int pageNum = 1;//页数
+    private boolean isNextPage = false;//是否有下一页
     private String modifyId;//确认修复的id
     private int removePosition;//要移除的position;
 
@@ -232,7 +232,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     @Override
     public void resultDayMalfunction(DayMalfunctionBean data) {
         if (data.getCode() == 200) {
-            if (data.getData().getList().size() > 0) {
+            if (data.getData().getList().size() > 0 || isNextPage) {
                 if (pageNum == 1) {
                     dayMalfunctionBeanList.clear();
                     dayMalfunctionBeanList.addAll(data.getData().getList());
@@ -299,12 +299,16 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                     }, rvHome);
 
                     if (dayMalfunctionBeanList.size() >= 10) {
+                        isNextPage = true;
                         pageNum += 1;
                     } else {
                         homeAdapter.loadMoreEnd();
                     }
                 } else {
-                    if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    if (data.getData().getList().size() == 0)
+                        homeAdapter.loadMoreEnd(); //完成所有加载
+                    else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                        isNextPage = true;
                         pageNum += 1;
                         homeAdapter.addData(data.getData().getList());
                         homeAdapter.loadMoreComplete(); //完成本次

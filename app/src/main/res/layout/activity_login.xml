@@ -97,14 +97,14 @@
             <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
                 android:id="@+id/et_captcha"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y150"
+                android:layout_height="@dimen/y120"
                 android:hint="验证码"
                 android:inputType="number"
                 app:met_allowEmpty="false"
                 app:met_clearButton="true"
                 app:met_errorMessage="请输入正确的验证码"
                 app:met_floatingLabelAnimating="true"
-                app:met_hideUnderline="false"
+                app:met_hideUnderline="true"
                 app:met_maxCharacters="6"
                 app:met_regexp="@string/regex_captcha"
                 app:met_textColor="@color/black"
@@ -117,6 +117,16 @@
             android:text="获取" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/view_captcha"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_captcha"
+        app:layout_constraintWidth_percent="0.8"
+        android:background="@color/tx_bottom_navigation"/>
+
     <LinearLayout
         android:id="@+id/ll_agreement"
         android:layout_width="0dp"
@@ -125,13 +135,15 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_captcha"
+        app:layout_constraintTop_toBottomOf="@+id/view_captcha"
         app:layout_constraintWidth_percent="0.8">
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cb_login"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:button="@drawable/select_radio_check"
+            android:paddingHorizontal="@dimen/x20"
             android:text="我已阅读并同意"
             android:textColor="@color/black"
             android:textSize="12sp" />

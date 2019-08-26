@@ -49,6 +49,7 @@ public class ModifyCarFragment extends BaseFragment<MalfunctionSumContract.View,
     private List<MalfunctionSumBean.DataBean.ListBean> malfunctionSumBeanList = new ArrayList<>();
     private ModifyCarAdapter modifyCarAdapter;
     private int pageNum = 1;//页数
+    private boolean isNextPage = false;//是否有下一页
 
     @Override
     public int getLayoutId() {
@@ -105,7 +106,7 @@ public class ModifyCarFragment extends BaseFragment<MalfunctionSumContract.View,
 
     @Override
     public void resultMalfunctionSum(MalfunctionSumBean data) {
-        if (data.getData().getList().size() > 0) {
+        if (data.getData().getList().size() > 0 || isNextPage) {
             if (pageNum == 1) {
                 malfunctionSumBeanList.clear();
                 malfunctionSumBeanList.addAll(data.getData().getList());
@@ -137,12 +138,16 @@ public class ModifyCarFragment extends BaseFragment<MalfunctionSumContract.View,
                 }, rvModifyCar);
 
                 if (malfunctionSumBeanList.size() >= 10) {
+                    isNextPage = true;
                     pageNum += 1;
                 } else {
                     modifyCarAdapter.loadMoreEnd();
                 }
             } else {
-                if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                if (data.getData().getList().size() == 0)
+                    modifyCarAdapter.loadMoreEnd(); //完成所有加载
+                else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    isNextPage = true;
                     pageNum += 1;
                     modifyCarAdapter.addData(data.getData().getList());
                     modifyCarAdapter.loadMoreComplete(); //完成本次

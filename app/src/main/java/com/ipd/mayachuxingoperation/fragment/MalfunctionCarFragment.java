@@ -25,7 +25,6 @@ import com.ipd.mayachuxingoperation.common.view.SpacesItemDecoration;
 import com.ipd.mayachuxingoperation.common.view.TopView;
 import com.ipd.mayachuxingoperation.contract.MalfunctionSumContract;
 import com.ipd.mayachuxingoperation.presenter.MalfunctionSumPresenter;
-import com.ipd.mayachuxingoperation.utils.L;
 import com.ipd.mayachuxingoperation.utils.ToastUtil;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -60,6 +59,7 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
     private List<MalfunctionSumBean.DataBean.ListBean> malfunctionSumBeanList = new ArrayList<>();
     private MalfunctionCarAdapter malfunctionCarAdapter;
     private int pageNum = 1;//页数
+    private boolean isNextPage = false;//是否有下一页
     private String modifyId;//确认修复的id
     private int removePosition;//要移除的position;
 
@@ -138,7 +138,7 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
     @Override
     public void resultMalfunctionSum(MalfunctionSumBean data) {
         if (data.getCode() == 200) {
-            if (data.getData().getList().size() > 0) {
+            if (data.getData().getList().size() > 0 || isNextPage) {
                 if (pageNum == 1) {
                     malfunctionSumBeanList.clear();
                     malfunctionSumBeanList.addAll(data.getData().getList());
@@ -197,12 +197,16 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
                     }, rvMalfunctionCar);
 
                     if (malfunctionSumBeanList.size() >= 10) {
+                        isNextPage = true;
                         pageNum += 1;
                     } else {
                         malfunctionCarAdapter.loadMoreEnd();
                     }
                 } else {
-                    if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    if (data.getData().getList().size() == 0)
+                        malfunctionCarAdapter.loadMoreEnd(); //完成所有加载
+                    else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                        isNextPage = true;
                         pageNum += 1;
                         malfunctionCarAdapter.addData(data.getData().getList());
                         malfunctionCarAdapter.loadMoreComplete(); //完成本次

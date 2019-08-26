@@ -2,8 +2,8 @@ package com.ipd.mayachuxingoperation.activity;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.CheckBox;
 
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.gyf.immersionbar.ImmersionBar;
 import com.ipd.mayachuxingoperation.R;
 import com.ipd.mayachuxingoperation.base.BaseActivity;
@@ -47,7 +47,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     @BindView(R.id.bt_captcha)
     SuperButton btCaptcha;
     @BindView(R.id.cb_login)
-    CheckBox cbLogin;
+    MaterialCheckBox cbLogin;
 
     private long firstTime = 0;
     private CountDownButtonHelper mCountDownHelper; //倒计时
