@@ -38,6 +38,8 @@ public interface UrlConfig {
      */
     String MALFUNCTION_SUM = "Problem/getProblems"; //故障|停用|修复   车辆列表
     String MALFUNCTION_DETAILS = "Problem/getBikeBadeDetail"; //故障详情
+    String FEED_LIST = "repair/feedBikes"; //馈电车辆列表
+    String IS_FEED = "repair/feedBike"; //将馈电车修改为不亏电
 
 
     /**

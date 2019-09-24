@@ -14,7 +14,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.gyf.immersionbar.ImmersionBar;
 import com.ipd.mayachuxingoperation.R;
 import com.ipd.mayachuxingoperation.activity.MalfunctionCarDetailsActivity;
-import com.ipd.mayachuxingoperation.activity.PauseCarActivity;
 import com.ipd.mayachuxingoperation.adapter.MalfunctionCarAdapter;
 import com.ipd.mayachuxingoperation.base.BaseFragment;
 import com.ipd.mayachuxingoperation.bean.MalfunctionSumBean;
@@ -36,7 +35,6 @@ import java.util.List;
 import java.util.TreeMap;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import io.reactivex.ObservableTransformer;
 import okhttp3.RequestBody;
 
@@ -128,11 +126,6 @@ public class MalfunctionCarFragment extends BaseFragment<MalfunctionSumContract.
                     break;
             }
         }
-    }
-
-    @OnClick(R.id.bt_top_pause_car)
-    public void onViewClicked() {
-        startActivity(new Intent(getContext(), PauseCarActivity.class));
     }
 
     @Override

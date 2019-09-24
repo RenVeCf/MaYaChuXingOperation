@@ -5,6 +5,7 @@
         <attr name="title_color" format="color" />
         <attr name="is_back" format="boolean" />
         <attr name="is_pause_car" format="boolean" />
+        <attr name="is_feed_car" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="ExpandingCollection">

@@ -4,7 +4,9 @@ import com.ipd.mayachuxingoperation.bean.CaptchaBean;
 import com.ipd.mayachuxingoperation.bean.ControlLockBean;
 import com.ipd.mayachuxingoperation.bean.DayMalfunctionBean;
 import com.ipd.mayachuxingoperation.bean.ElectricBoxBean;
+import com.ipd.mayachuxingoperation.bean.FeedListBean;
 import com.ipd.mayachuxingoperation.bean.HomeInfoBean;
+import com.ipd.mayachuxingoperation.bean.IsFeedBean;
 import com.ipd.mayachuxingoperation.bean.LoginBean;
 import com.ipd.mayachuxingoperation.bean.MalfunctionCarDetailsBean;
 import com.ipd.mayachuxingoperation.bean.MalfunctionSumBean;
@@ -32,7 +34,9 @@ import static com.ipd.mayachuxingoperation.common.config.UrlConfig.CAPTCHA;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.CONTROL_LOCK;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.DAY_MALFUNCTION;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.ELECTRIC_BOX;
+import static com.ipd.mayachuxingoperation.common.config.UrlConfig.FEED_LIST;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.HOME_INFO;
+import static com.ipd.mayachuxingoperation.common.config.UrlConfig.IS_FEED;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.LOGIN;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.MALFUNCTION_DETAILS;
 import static com.ipd.mayachuxingoperation.common.config.UrlConfig.MALFUNCTION_SUM;
@@ -114,4 +118,14 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(ELECTRIC_BOX)
     Observable<ElectricBoxBean> getElectricBox(@FieldMap Map<String, String> map);
+
+    //馈电车辆列表
+    @FormUrlEncoded
+    @POST(FEED_LIST)
+    Observable<FeedListBean> getFeedList(@FieldMap Map<String, String> map);
+
+    //将馈电车修改为不亏电
+    @FormUrlEncoded
+    @POST(IS_FEED)
+    Observable<IsFeedBean> getIsFeed(@FieldMap Map<String, String> map);
 }

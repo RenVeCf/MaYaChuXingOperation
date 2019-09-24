@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.MalfunctionCarFragment">
+    tools:context=".activity.FeedCarActivity">
 
     <com.ipd.mayachuxingoperation.common.view.TopView
-        android:id="@+id/tv_malfunction_car"
+        android:id="@+id/tv_feed_car"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         android:gravity="bottom"
-        app:is_pause_car="true"
-        app:is_feed_car="true"
-        app:title="故障车辆"
+        app:title="馈电车辆"
         app:title_color="@color/black" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srl_malfunction_car"
+        android:id="@+id/srl_feed_car"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/x50"
@@ -30,7 +28,7 @@
         android:scrollbars="none">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_malfunction_car"
+            android:id="@+id/rv_feed_car"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_pop" />
