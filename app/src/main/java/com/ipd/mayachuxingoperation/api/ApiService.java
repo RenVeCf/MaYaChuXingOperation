@@ -120,12 +120,10 @@ public interface ApiService {
     Observable<ElectricBoxBean> getElectricBox(@FieldMap Map<String, String> map);
 
     //馈电车辆列表
-    @FormUrlEncoded
-    @POST(FEED_LIST)
-    Observable<FeedListBean> getFeedList(@FieldMap Map<String, String> map);
+    @GET(FEED_LIST)
+    Observable<FeedListBean> getFeedList(@QueryMap Map<String, String> map);
 
     //将馈电车修改为不亏电
-    @FormUrlEncoded
-    @POST(IS_FEED)
-    Observable<IsFeedBean> getIsFeed(@FieldMap Map<String, String> map);
+    @GET(IS_FEED)
+    Observable<IsFeedBean> getIsFeed(@QueryMap Map<String, String> map);
 }

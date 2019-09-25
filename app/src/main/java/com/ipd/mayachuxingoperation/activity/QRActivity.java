@@ -127,7 +127,7 @@ public class QRActivity extends BaseActivity<LockContract.View, LockContract.Pre
      */
     protected void handleAnalyzeSuccess(Bitmap bitmap, String result) {
         L.i("result = " + result);
-        carNum = identical(result, "IMEI:", " ").replaceAll("IMEI:", "").trim();
+        carNum = identical(result, "imei=", "&sn").replaceAll("imei=", "").replaceAll("&", "").trim();
         if (lockType != 3) {
             TreeMap<String, String> controlLockMap = new TreeMap<>();
             controlLockMap.put("imei", carNum);
