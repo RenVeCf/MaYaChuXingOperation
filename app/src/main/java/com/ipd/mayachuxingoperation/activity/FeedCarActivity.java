@@ -153,7 +153,7 @@ public class FeedCarActivity extends BaseActivity<FeedContract.View, FeedContrac
                 } else {
                     if (data.getData().getList().size() == 0)
                         feedAdapter.loadMoreEnd(); //完成所有加载
-                    else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    else if (data.getData().getList().size() >= 10) {
                         isNextPage = true;
                         pageNum += 1;
                         feedAdapter.addData(data.getData().getList());
@@ -176,12 +176,12 @@ public class FeedCarActivity extends BaseActivity<FeedContract.View, FeedContrac
 
     @Override
     public void resultIsFeed(IsFeedBean data) {
+        ToastUtil.showShortToast(data.getMessage());
         if (data.getCode() == 200) {
             feedList.remove(removePosition);
             feedAdapter.notifyDataSetChanged();
             feedAdapter.setEmptyView(R.layout.null_data, rvFeedCar);
-        } else
-            ToastUtil.showShortToast(data.getMessage());
+        }
     }
 
     @Override

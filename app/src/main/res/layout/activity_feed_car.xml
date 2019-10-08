@@ -13,6 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         android:gravity="bottom"
+        app:is_back="true"
         app:title="馈电车辆"
         app:title_color="@color/black" />
 

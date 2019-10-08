@@ -52,7 +52,7 @@
             android:layout_width="@dimen/x200"
             android:layout_height="@dimen/y90"
             android:layout_marginStart="@dimen/x20"
-            android:text="确认馈电" />
+            android:text="确认修复" />
     </LinearLayout>
 
     <View

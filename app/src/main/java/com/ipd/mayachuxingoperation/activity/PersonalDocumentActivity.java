@@ -144,7 +144,7 @@ public class PersonalDocumentActivity extends BaseActivity<PersonalDocumentContr
                     ApplicationUtil.getManager().finishActivity(MainActivity.class);
                     //清除所有临时储存
                     SPUtil.clear(ApplicationUtil.getContext());
-                    startActivity(new Intent(this, PersonalDocumentActivity.class));
+                    startActivity(new Intent(this, LoginActivity.class));
                     finish();
                 }
                 break;

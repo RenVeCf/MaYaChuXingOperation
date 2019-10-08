@@ -307,7 +307,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                 } else {
                     if (data.getData().getList().size() == 0)
                         homeAdapter.loadMoreEnd(); //完成所有加载
-                    else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    else if (data.getData().getList().size() >= 10) {
                         isNextPage = true;
                         pageNum += 1;
                         homeAdapter.addData(data.getData().getList());

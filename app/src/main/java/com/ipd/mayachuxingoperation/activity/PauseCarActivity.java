@@ -150,7 +150,7 @@ public class PauseCarActivity extends BaseActivity<MalfunctionSumContract.View, 
                 } else {
                     if (data.getData().getList().size() == 0)
                         pauseCarAdapter.loadMoreEnd(); //完成所有加载
-                    else if ((data.getData().getList().size() - pageNum * 10) >= 0) {
+                    else if (data.getData().getList().size() >= 10) {
                         isNextPage = true;
                         pageNum += 1;
                         pauseCarAdapter.addData(data.getData().getList());
